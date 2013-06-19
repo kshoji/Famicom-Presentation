@@ -3,6 +3,7 @@ package jp.kshoji.famicom;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -38,7 +39,12 @@ public class PresentationSourceProcessor {
 	private static void convertTextToPngImage() throws Exception {
 		BufferedImage misaki = ImageIO.read(new File("misaki_gothic_inverted.png"));
 
-		for (int fileNumber = 0; fileNumber < new File("text").listFiles().length; fileNumber++) {
+		for (int fileNumber = 0; fileNumber < new File("text").listFiles(new FileFilter() {
+			@Override
+			public boolean accept(File pathname) {
+				return pathname.getName().endsWith(".txt");
+			}
+		}).length; fileNumber++) {
 			BufferedImage image = new BufferedImage(256, 224, BufferedImage.TYPE_3BYTE_BGR);
 			Graphics2D graphics2d = image.createGraphics();
 			

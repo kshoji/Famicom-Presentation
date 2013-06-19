@@ -258,6 +258,4 @@ sounds_data:
 ; add chr files kshoji
 .segment "CHARS"
 
-	.incbin "bank00.chr"
-	.incbin "bank01.chr"
-    .include "chrrom.s" ; TODO
+    .include "chrrom.s"

@@ -7,6 +7,6 @@ fi
 if [ ! -e ./bin ]; then
 mkdir ./bin
 fi
-cd src && javac jp/kshoji/famicom/* -d ../bin && cd ..
+cd src && javac -encoding UTF-8 jp/kshoji/famicom/* -d ../bin && cd ..
 java -classpath ./bin jp.kshoji.famicom.PresentationSourceProcessor
 cd cc65 && sh compile.sh && cd ..
